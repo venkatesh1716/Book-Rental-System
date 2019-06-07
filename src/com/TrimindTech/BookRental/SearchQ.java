@@ -19,9 +19,16 @@ public class SearchQ {
             }
             cond="('"+authNames+"')";
             System.out.println(cond);
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            //establish the connection
-            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root");
+
+
+            //SQL driver
+            /* Class.forName("oracle.jdbc.driver.OracleDriver");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system","root");*/
+
+
+            //mysql driver
+            Class.forName("org.gjt.mm.mysql.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/vicky18","root","root");
             if (con != null)
                 st = con.createStatement();
             //prpeare SQL Query
@@ -38,7 +45,7 @@ public class SearchQ {
         catch (Exception e) {
             e.printStackTrace();
         } finally {
-             try {
+            try {
                 if (rs != null)
                     rs.close();
             } catch (SQLException se) {

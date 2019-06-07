@@ -9,7 +9,7 @@ public class ConnTest {
     {
         oracle.jdbc.driver.OracleDriver driver=new oracle.jdbc.driver.OracleDriver();
         DriverManager.registerDriver(driver);
-        Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","SYSTEM","ROOT");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/vicky18","root","root");
         if(con==null)
         {
             System.out.println("Connection is not established");

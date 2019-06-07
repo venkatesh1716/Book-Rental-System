@@ -53,13 +53,18 @@ public class BookRental {
                     display.displayRecords();
                     break;
                 case 5:
-                    catalog.rentBook();
+                    DBBorrowerList blist= new DBBorrowerList();
+                    blist.insertBorrowLIST();
+                    DeleteBorrowList db= new DeleteBorrowList();
+                    db.deleteBorrowLists();
                     break;
                 case 6:
-                    returnBook();
+                    BookReturn returnbooks= new BookReturn();
+                    returnbooks.bookreturn();
                     break;
                 case 7:
-                    bList();
+                    DisplayBorrowList displayList= new DisplayBorrowList();
+                    displayList.DisplayBList();
                     break;
                 case 8:
                     exit(0);
@@ -70,47 +75,11 @@ public class BookRental {
         } while (option != 8);
 
     }
-    public static void printBorrowList () {
-        System.out.println(borrower.getAllBorrowerList().toString());
-    }
-    public static void returnBook ()
-    {
-        System.out.println("the book is returned");
-        System.out.println("the book details are" + borrower.getAllBorrowerList().toString());
-    }
+
     public static void bList () {
 
         System.out.println("the book details are" + borrower.getAllBorrowerList().toString());
 
-    }
-    public static Book searchBook () {
-        System.out.println("enter book name to search");
-        String bookname = sc.next();
-        Book book = catalog.searchBook(bookname);
-        return book;
-    }
-    public static void borrowerList () {
-        BarrowerFile borrowerFile = new BarrowerFile();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("enter book name to rent");
-        String bookName = sc.next();
-        borrowerFile.setBookName(bookName);
-        System.out.println("entet first name");
-        String firstName = sc.next();
-        borrowerFile.setFirstName(firstName);
-        System.out.println("entet last name");
-        String lastName = sc.next();
-        borrowerFile.setLastName(lastName);
-        System.out.println("entet email id");
-        String email = sc.next();
-        borrowerFile.setEmail(email);
-        System.out.println("enter no.of days to rent");
-        int days = sc.nextInt();
-        Date date = new Date();
-        String todayDate = date.toString();
-        borrowerFile.setDate(todayDate);
-        borrowerFile.setNoOfDaysLoan(days);
-        borrower.addBorrower(borrowerFile);
     }
 }
 

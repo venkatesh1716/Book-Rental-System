@@ -25,12 +25,15 @@ public class DeleteRec {
             System.out.println(cond);
 
 
-            //register jdbc driver
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            //establish the connection
-            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system","root");
-            //create Statement object
-            if(con!=null)
+            //SQL driver
+
+            /* Class.forName("oracle.jdbc.driver.OracleDriver");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system","root");*/
+
+            //mysql driver
+
+            Class.forName("org.gjt.mm.mysql.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/vicky18","root","root");            if(con!=null)
                 st=con.createStatement();
             //prepare query
             query="DELETE FROM BOOKRENTAL WHERE AUTHNAME ="+cond;
